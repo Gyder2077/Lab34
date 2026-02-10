@@ -2,10 +2,11 @@ package People;
 
 import Enums.*;
 import Exceptions.GettingItemException;
+import Interfaces.Spreader;
 import Items.Item;
 import Locations.Location;
 
-public class CityGirl extends CityGuy {
+public class CityGirl extends CityGuy implements Spreader {
     public CityGirl(String name, int age, Location currentLocation, Emotion currentEmotion) {
         super(name, age, currentLocation, currentEmotion);
     }
