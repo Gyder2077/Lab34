@@ -6,6 +6,8 @@ import Interfaces.Spreader;
 import Items.Item;
 import Locations.Location;
 
+import java.util.ArrayList;
+
 public class CityGirl extends CityGuy implements Spreader {
     public CityGirl(String name, int age, Location currentLocation, Emotion currentEmotion) {
         super(name, age, currentLocation, currentEmotion);
@@ -23,5 +25,10 @@ public class CityGirl extends CityGuy implements Spreader {
     public String toString() {
         return String.format("CityGirl{name='%s', age='%d', currentLocation='%s', currentEmotion='%s', item='%s'}",
                 name, age, currentLocation.toString(), currentEmotion, item);
+    }
+
+    @Override
+    public void spread(ArrayList<MiniPEKKA> population) {
+
     }
 }
