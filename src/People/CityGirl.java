@@ -17,4 +17,10 @@ public class CityGirl extends CityGuy {
             System.out.printf("'%s' взяла предмет для помощи'%n'", name);
         } else {throw new GettingItemException(name + "не может получать такие предметы");}
     }
+
+    @Override
+    public String toString() {
+        return String.format("CityGirl{name='%s', age='%d', currentLocation='%s', currentEmotion='%s', item='%s'}",
+                name, age, currentLocation.toString(), currentEmotion, item);
+    }
 }
