@@ -1,0 +1,44 @@
+package Items;
+
+import Enums.ItemType;
+import Interfaces.Usefull;
+
+import java.util.Objects;
+
+public class Food extends Item implements Usefull {
+    protected int usefulness;
+
+    protected Food(String name, int usefulness) {
+        super(name);
+        setUsefulness(usefulness);
+        type = ItemType.FOOD;
+    }
+
+    @Override
+    public void setUsefulness(int usefulness) {
+        if (usefulness >= 0 && usefulness <= 10) {
+            this.usefulness = usefulness;
+        } else {
+            throw new IllegalArgumentException("Полезность должна быть от 0 до 10");
+        }
+    }
+
+    @Override
+    public int getUsefulness() {return usefulness;}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj.getClass() != getClass()) {return false;}
+        Food that = (Food) obj;
+        return Objects.equals(that.name, name) && Objects.equals(that.type, type) && Objects.equals(that.usefulness, usefulness);
+    }
+
+    @Override
+    public int hashCode() {return Objects.hash(name, type, usefulness);}
+
+    @Override
+    public String toString() {
+        return String.format("FoodItem{name='%s', type='%s', usefulness='%d'}",
+                name, type.getType(), usefulness);
+    }
+}
