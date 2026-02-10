@@ -28,5 +28,7 @@ public class CityGirl extends CityGuy implements Spreader {
     }
 
     @Override
-    public void spread(ArrayList<MiniPEKKA> population) {}
+    public void spread(ArrayList<MiniPEKKA> population) {
+
+    }
 }
