@@ -1,11 +1,12 @@
 package Enums;
 
 public enum Emotion {
-    JOY("радость"),
-    FATIGUE("усталость"),
-    NEUTRAL("нейтральность"),
-    WORRY("беспокойство"),
-    DISTRESS("волнение");
+    JOY(" сияет от радости"),
+    FATIGUE(" находится в плохом состоянии"),
+    NEUTRAL(" нейтрален к происходящему в городе"),
+    WORRY(" начинает беспокоиться"),
+    DISTRESS(" волнуется"),
+    DEPRESSION(" впадает в депрессию");
 
     private final String name;
 
@@ -13,5 +14,5 @@ public enum Emotion {
         this.name = name;
     }
 
-    public String getEmotion() {return " испытывает " + name;}
+    public String getEmotion() {return name;}
 }

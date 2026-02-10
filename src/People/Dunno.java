@@ -1,7 +1,6 @@
 package People;
 
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 import Enums.Emotion;
 import Exceptions.LocationChangeException;
 import Interfaces.Movable;
@@ -15,13 +14,13 @@ public class Dunno extends MiniPEKKA implements Movable {
 
     public Dunno(String name, int age, Location currentLocation) {
         super(name, age, currentLocation);
-        this.currentEmotion = Emotion.FATIGUE;
+        currentEmotion = Emotion.NEUTRAL;
         isAlive = true;
         satiety = -10;
     }
 
     public boolean ifAlive() {return isAlive;}
-    private void setAlive(boolean isAlive) {this.isAlive = isAlive;}
+    private void setAlive() {isAlive = false;}
 
     @Override
     public void getItem(Item item) {
@@ -41,9 +40,10 @@ public class Dunno extends MiniPEKKA implements Movable {
             currentLocation = loc;
             double rand = new Random().nextDouble();
             if (rand <= 0.2) {
-                setAlive(false);
+                setAlive();
             }
             if (ifAlive()) {
+                currentEmotion = Emotion.FATIGUE;
                 System.out.println(name + " из-за аварии попал в больницу Цветочного города");
             } else {
                 System.out.println(name + " погиб в аварии (анлак)");

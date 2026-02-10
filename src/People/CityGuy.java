@@ -12,9 +12,10 @@ public class CityGuy extends MiniPEKKA implements Movable {
     protected Emotion currentEmotion;
     protected Item item;
 
-    public CityGuy(String name, int age, Location currentLocation, Emotion currentEmotion) {
+    public CityGuy(String name, int age, Location currentLocation) {
         super(name, age, currentLocation);
-        this.currentEmotion = currentEmotion;
+        this.currentEmotion = Emotion.NEUTRAL;
+        System.out.println(name + currentEmotion.getEmotion());
     }
 
     public Item getItem() {return item;}
@@ -24,7 +25,8 @@ public class CityGuy extends MiniPEKKA implements Movable {
         if (item.getType() == ItemType.CLOTHES) {
             this.item = item;
             System.out.printf("'%s' взял одежду из кладовой'%n'", name);
-        } else {throw new GettingItemException(name + "может получать только список");}
+            changeEmotion(Emotion.JOY);
+        } else {throw new GettingItemException(name + "может получать только одежду");}
     }
 
     @Override
