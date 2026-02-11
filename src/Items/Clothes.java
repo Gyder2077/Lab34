@@ -3,7 +3,7 @@ package Items;
 import Enums.ItemType;
 
 public class Clothes extends Item {
-    protected Clothes(String name) {
+    public Clothes(String name) {
         super(name);
         type = ItemType.CLOTHES;
     }
