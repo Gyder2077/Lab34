@@ -10,9 +10,7 @@ public enum Emotion {
 
     private final String name;
 
-    Emotion(String name) {
-        this.name = name;
-    }
+    Emotion(String name) {this.name = name;}
 
     public String getEmotion() {return name;}
 }
