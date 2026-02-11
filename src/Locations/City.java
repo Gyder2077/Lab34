@@ -9,9 +9,10 @@ import java.util.Objects;
 public final class City extends Location {
     private ArrayList<MiniPEKKA> population;
 
-    public City(String name, ArrayList<MiniPEKKA> population) {
+    public City(String name) {
         super(name);
-        this.population = population;
+        this.population = new ArrayList<>();
+        System.out.printf("Действия присходят в городе '%s''%n'", name);
     }
 
     @Override
@@ -31,7 +32,6 @@ public final class City extends Location {
     public ArrayList<MiniPEKKA> getPopulation() {
         return population;
     }
-    public void setPopulation(ArrayList<MiniPEKKA> population) {this.population = population;}
 
     @Override
     public boolean equals(Object obj) {

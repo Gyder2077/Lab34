@@ -9,9 +9,9 @@ import java.util.Objects;
 public class Wardrobe extends Location {
     private ArrayList<Item> items;
 
-    public Wardrobe(String name, ArrayList<Item> items) {
+    public Wardrobe(String name) {
         super(name);
-        this.items = items;
+        this.items = new ArrayList<>();
     }
 
     @Override
@@ -46,6 +46,6 @@ public class Wardrobe extends Location {
 
     @Override
     public String toString() {
-        return String.format("City{name='%s', population='%s'}", name, items.toString());
+        return String.format("Wardrobe{name='%s', items='%s'}", name, items.toString());
     }
 }

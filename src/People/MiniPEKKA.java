@@ -27,6 +27,7 @@ public abstract class MiniPEKKA {
     }
 
     public abstract void getItem(Item item);
+    public String getName() {return name;}
 
     @Override
     public boolean equals(Object obj) {

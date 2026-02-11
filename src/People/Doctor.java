@@ -12,6 +12,7 @@ public class Doctor extends MiniPEKKA {
 
     public Doctor(String name, int age, Location currentLocation) {
         super(name, age, currentLocation);
+        System.out.println(name + " доктор в " + currentLocation.getName());
     }
 
     public Item getItem() {return item;}

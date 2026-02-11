@@ -1,20 +1,18 @@
 package Locations;
 
 import Exceptions.DelFromLocationException;
-import People.Doctor;
-import People.MiniPEKKA;
+import People.*;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public final class Hospital extends Location {
     private ArrayList<MiniPEKKA> population;
-    private final Doctor doctor;
+    private Doctor doctor;
 
-    public Hospital(String name, ArrayList<MiniPEKKA> population, Doctor doctor) {
+    public Hospital(String name) {
         super(name);
-        this.population = population;
-        this.doctor = doctor;
+        this.population = new ArrayList<>();
     }
 
     @Override
@@ -31,9 +29,8 @@ public final class Hospital extends Location {
         }
     }
 
-    public Doctor getDoctor() {return doctor;}
+    public void setDoctor(Doctor doctor) {this.doctor = doctor;}
     public ArrayList<MiniPEKKA> getPopulation() {return population;}
-    public void setPopulation(ArrayList<MiniPEKKA> population) {this.population = population;}
 
     @Override
     public boolean equals(Object obj) {

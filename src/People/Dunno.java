@@ -3,6 +3,7 @@ package People;
 import java.util.*;
 import Enums.Emotion;
 import Exceptions.LocationChangeException;
+import Exceptions.MovingToWardrobeException;
 import Interfaces.Movable;
 import Items.*;
 import Locations.Location;
@@ -14,11 +15,14 @@ public class Dunno extends MiniPEKKA implements Movable {
 
     public Dunno(String name, int age, Location currentLocation) {
         super(name, age, currentLocation);
-        currentEmotion = Emotion.NEUTRAL;
+        currentEmotion = Emotion.JOY;
         isAlive = true;
         satiety = -10;
+        System.out.printf("Великий путешественник '%s' попадает в '%s','%s''%n'",
+                name, currentLocation.getName(), currentEmotion.getEmotion());
     }
 
+    public int getSatiety() {return satiety;}
     public boolean ifAlive() {return isAlive;}
     private void setAlive() {isAlive = false;}
 
@@ -35,19 +39,21 @@ public class Dunno extends MiniPEKKA implements Movable {
         if (currentLocation == loc) {
             throw new LocationChangeException(name + " уже находится в " + loc.getName());
         } else {
-            currentLocation.del(this);
-            loc.add(this);
-            currentLocation = loc;
-            double rand = new Random().nextDouble();
-            if (rand <= 0.2) {
-                setAlive();
-            }
-            if (ifAlive()) {
-                currentEmotion = Emotion.FATIGUE;
-                System.out.println(name + " из-за аварии попал в больницу Цветочного города");
-            } else {
-                System.out.println(name + " погиб в аварии (анлак)");
-            }
+            if (!loc.toString().contains("Wardrobe")) {
+                currentLocation.del(this);
+                loc.add(this);
+                currentLocation = loc;
+                double rand = new Random().nextDouble();
+                if (rand <= 0.2) {
+                    setAlive();
+                }
+                if (ifAlive()) {
+                    currentEmotion = Emotion.FATIGUE;
+                    System.out.println(name + " из-за аварии попал в больницу города " + currentLocation.getName());
+                } else {
+                    System.out.println(name + " погиб в аварии (анлак)");
+                }
+            } else {throw new MovingToWardrobeException("В подвал у нас никто не ходит");}
         }
     }
 
@@ -56,8 +62,6 @@ public class Dunno extends MiniPEKKA implements Movable {
         currentEmotion = emotion;
         System.out.println(name + currentEmotion.getEmotion());
     }
-
-    public int getSatiety() {return satiety;}
 
     @Override
     public boolean equals(Object obj) {

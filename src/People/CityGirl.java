@@ -16,9 +16,7 @@ public class CityGirl extends CityGuy implements Spreader {
         super(name, age, currentLocation);
     }
 
-    public News getNews() {
-        return news;
-    }
+    public News getNews() {return news;}
     public void setNews(News news) {
         this.news = news;
         if (news.isAlive()) {

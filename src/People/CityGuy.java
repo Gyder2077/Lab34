@@ -18,7 +18,7 @@ public class CityGuy extends MiniPEKKA implements Movable {
         System.out.println(name + currentEmotion.getEmotion());
     }
 
-    public Item getItem() {return item;}
+    public Item help() {return item;}
 
     @Override
     public void getItem(Item item) {
