@@ -28,10 +28,7 @@ public class Wardrobe extends Location {
         }
     }
 
-    public ArrayList<Item> getItems() {
-        return items;
-    }
-
+    public ArrayList<Item> getItems() {return items;}
     public void setItems(ArrayList<Item> items) {this.items = items;}
 
     @Override
