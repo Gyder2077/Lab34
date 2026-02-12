@@ -25,11 +25,12 @@ public class Main {
     private static Wardrobe wardrobeCreation() {
         Wardrobe wardrobe = new Wardrobe("Подвал");
         ArrayList<String> clothesNames = new ArrayList<>(List.of("Халат домашний", "Топ", "Шаровары", "Комбинезон",
-                "Костюм химзащ", "Шлем", "Скафандр", "Трусы", "Тапок (один)", "Галстук"));
+                "Костюм химзащ", "Шлем", "Скафандр", "Трусы", "Тапок (один)", "Галстук", "Полотенце"));
         System.out.printf("В гардеробе есть: %n");
-        while (clothesNames.size() > 4) {
+        while (clothesNames.size() > 5) {
             Random rand = new Random();
             Clothes clothes = new Clothes(clothesNames.get(rand.nextInt(clothesNames.size())));
+            wardrobe.add(clothes);
             System.out.println(clothes.getName());
             clothesNames.remove(clothes.getName());
         }
@@ -56,12 +57,17 @@ public class Main {
         dunno.moveTo(hospital);
         if (dunno.ifAlive()) {
             hospital.getDoctor().getItem(new Catalog("Список необходимых вещей",
-                    "Я не придумал что сюда написать, не бейте пж (по канону тут список вещей 1 2 3...)"));
-
+                    "Я не придумал что сюда написать, не бейте пж (по канону тут список вещей 1 2 3...)\n"));
+            for (MiniPEKKA citizen : hospital.getPopulation()) {
+                if (citizen.getClass() == CityGuy.class) {
+                    ((CityGuy) citizen).moveTo(wardrobe);
+                }
+            }
             News news = new News(dunno.getName() + " из-за аварии попал в больницу города", true);
             for (MiniPEKKA citizen : city.getPopulation()) {
-                if (citizen.getClass() == CityGirl.class) {
+                if (citizen.getClass() == CityGirl.class && ((CityGirl) citizen).getNews() != news) {
                     ((CityGirl) citizen).setNews(news);
+                    break;
                 }
             }
         } else {
@@ -69,6 +75,7 @@ public class Main {
             for (MiniPEKKA citizen : city.getPopulation()) {
                 if (citizen.getClass() == CityGirl.class && ((CityGirl) citizen).getNews() != news) {
                     ((CityGirl) citizen).setNews(news);
+                    break;
                 }
             }
             System.out.println("ГГ сдох, город в депрессии\n\nКонец!");

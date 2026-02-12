@@ -19,7 +19,6 @@ public class CityGirl extends CityGuy implements Spreader {
     public News getNews() {return news;}
     public void setNews(News news) {
         this.news = news;
-        System.out.println("Узнала о том, что великий путешественник " + getNews().report());
         if (news.isAlive()) {
             changeEmotion(getRandEmotion());
             spread(((City) currentLocation).getPopulation());

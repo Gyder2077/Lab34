@@ -4,9 +4,9 @@ import Enums.*;
 import Exceptions.*;
 import Interfaces.Movable;
 import Items.Item;
-import Locations.Location;
+import Locations.*;
 
-import java.util.Objects;
+import java.util.*;
 
 public class CityGuy extends MiniPEKKA implements Movable {
     protected Emotion currentEmotion;
@@ -22,7 +22,8 @@ public class CityGuy extends MiniPEKKA implements Movable {
     public void getItem(Item item) {
         if (item.getType() == ItemType.CLOTHES) {
             this.item = item;
-            System.out.printf("'%s' взял одежду из кладовой%n", name);
+            System.out.printf("%s получает из кладовой %s и возвращается обратно в %s%n",
+                    name, item.getName(), currentLocation.getName());
             changeEmotion(Emotion.JOY);
         } else {throw new GettingItemException(name + "может получать только одежду");}
     }
@@ -31,7 +32,15 @@ public class CityGuy extends MiniPEKKA implements Movable {
     public void moveTo(Location loc) {
         if (currentLocation == loc) {
             throw new LocationChangeException(name + " уже находится в " + loc.getName());
-        } else {
+        } else if (loc.getClass() == Wardrobe.class) {
+            Wardrobe wardrobe = (Wardrobe) loc;
+            Random rand = new Random();
+            ArrayList<Item> items = wardrobe.getItems();
+            Item item = items.get(rand.nextInt(items.size()));
+            wardrobe.del(item);
+            getItem(item);
+        }
+        else {
             currentLocation.del(this);
             System.out.printf("'%s' перемещается из '%s' в '%s'%n", name, currentLocation.getName(), loc.getName());
             loc.add(this);
