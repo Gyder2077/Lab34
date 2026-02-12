@@ -30,7 +30,9 @@ public final class Hospital extends Location {
     }
 
     public void setDoctor(Doctor doctor) {this.doctor = doctor;}
+    public Doctor getDoctor() {return doctor;}
     public ArrayList<MiniPEKKA> getPopulation() {return population;}
+    public void setPopulation(ArrayList<MiniPEKKA> population) {this.population = population;}
 
     @Override
     public boolean equals(Object obj) {

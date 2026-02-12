@@ -18,8 +18,6 @@ public class CityGuy extends MiniPEKKA implements Movable {
         System.out.println(name + currentEmotion.getEmotion());
     }
 
-    public Item help() {return item;}
-
     @Override
     public void getItem(Item item) {
         if (item.getType() == ItemType.CLOTHES) {

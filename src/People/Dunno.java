@@ -2,11 +2,10 @@ package People;
 
 import java.util.*;
 import Enums.Emotion;
-import Exceptions.LocationChangeException;
-import Exceptions.MovingToWardrobeException;
+import Exceptions.*;
 import Interfaces.Movable;
 import Items.*;
-import Locations.Location;
+import Locations.*;
 
 public class Dunno extends MiniPEKKA implements Movable {
     private boolean isAlive;
@@ -39,7 +38,7 @@ public class Dunno extends MiniPEKKA implements Movable {
         if (currentLocation == loc) {
             throw new LocationChangeException(name + " уже находится в " + loc.getName());
         } else {
-            if (!loc.toString().contains("Wardrobe")) {
+            if (loc.getClass() != Wardrobe.class) {
                 currentLocation.del(this);
                 loc.add(this);
                 currentLocation = loc;
@@ -50,8 +49,6 @@ public class Dunno extends MiniPEKKA implements Movable {
                 if (ifAlive()) {
                     currentEmotion = Emotion.FATIGUE;
                     System.out.println(name + " из-за аварии попал в больницу города " + currentLocation.getName());
-                } else {
-                    System.out.println(name + " погиб в аварии (анлак)");
                 }
             } else {throw new MovingToWardrobeException("В подвал у нас никто не ходит");}
         }

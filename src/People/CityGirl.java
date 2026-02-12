@@ -4,7 +4,7 @@ import Enums.*;
 import Exceptions.GettingItemException;
 import Interfaces.Spreader;
 import Items.Item;
-import Locations.Location;
+import Locations.*;
 import Records.News;
 
 import java.util.*;
@@ -21,9 +21,11 @@ public class CityGirl extends CityGuy implements Spreader {
         this.news = news;
         if (news.isAlive()) {
             changeEmotion(getRandEmotion());
+            spread(((City) currentLocation).getPopulation());
             return;
         }
         changeEmotion(Emotion.DEPRESSION);
+        spread(((City) currentLocation).getPopulation());
     }
     private Emotion getRandEmotion() {
         List<Emotion> emotionList = List.of(Emotion.WORRY, Emotion.DISTRESS);
@@ -34,9 +36,10 @@ public class CityGirl extends CityGuy implements Spreader {
     @Override
     public void spread(ArrayList<MiniPEKKA> population) {
         for (MiniPEKKA citizen : population) {
-            if (citizen.getClass() == getClass()) {
+            if (citizen.getClass() == getClass() && ((CityGirl) citizen).getNews() != getNews()) {
                 ((CityGirl) citizen).setNews(getNews());
-                System.out.println(citizen.name + " узнает о том, что великий путешественник " + getNews() + ", от " + name);
+                System.out.println("Узнала о том, что великий путешественник " + getNews() + ", от " + name);
+                break;
             }
         }
     }
