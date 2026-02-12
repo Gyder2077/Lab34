@@ -17,7 +17,7 @@ public class Dunno extends MiniPEKKA implements Movable {
         currentEmotion = Emotion.JOY;
         isAlive = true;
         satiety = -10;
-        System.out.printf("Великий путешественник '%s' попадает в '%s','%s''%n'",
+        System.out.printf("Великий путешественник '%s' попадает в '%s',%s%n",
                 name, currentLocation.getName(), currentEmotion.getEmotion());
     }
 

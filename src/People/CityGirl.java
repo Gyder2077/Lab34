@@ -19,6 +19,7 @@ public class CityGirl extends CityGuy implements Spreader {
     public News getNews() {return news;}
     public void setNews(News news) {
         this.news = news;
+        System.out.println("Узнала о том, что великий путешественник " + getNews().report());
         if (news.isAlive()) {
             changeEmotion(getRandEmotion());
             spread(((City) currentLocation).getPopulation());
@@ -38,7 +39,6 @@ public class CityGirl extends CityGuy implements Spreader {
         for (MiniPEKKA citizen : population) {
             if (citizen.getClass() == getClass() && ((CityGirl) citizen).getNews() != getNews()) {
                 ((CityGirl) citizen).setNews(getNews());
-                System.out.println("Узнала о том, что великий путешественник " + getNews() + ", от " + name);
                 break;
             }
         }

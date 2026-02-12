@@ -19,7 +19,7 @@ public class Doctor extends MiniPEKKA {
     public void getItem(Item item) {
         if (item.getType() == ItemType.CATALOG) {
             this.item = (Catalog) item;
-            System.out.printf("'%s' получила список необходимых вещей'%n%s%n'", name, this.item.getText());
+            System.out.printf("'%s' получила список необходимых вещей:%n%s%n", name, this.item.getText());
         } else {throw new GettingItemException("Доктор может получать только список");}
     }
 

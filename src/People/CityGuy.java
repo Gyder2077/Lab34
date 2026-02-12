@@ -22,7 +22,7 @@ public class CityGuy extends MiniPEKKA implements Movable {
     public void getItem(Item item) {
         if (item.getType() == ItemType.CLOTHES) {
             this.item = item;
-            System.out.printf("'%s' взял одежду из кладовой'%n'", name);
+            System.out.printf("'%s' взял одежду из кладовой%n", name);
             changeEmotion(Emotion.JOY);
         } else {throw new GettingItemException(name + "может получать только одежду");}
     }
@@ -33,7 +33,7 @@ public class CityGuy extends MiniPEKKA implements Movable {
             throw new LocationChangeException(name + " уже находится в " + loc.getName());
         } else {
             currentLocation.del(this);
-            System.out.printf("'%s' перемещается из '%s' в '%s''%n'", name, currentLocation.toString(), loc.toString());
+            System.out.printf("'%s' перемещается из '%s' в '%s'%n", name, currentLocation.getName(), loc.getName());
             loc.add(this);
             currentLocation = loc;
         }

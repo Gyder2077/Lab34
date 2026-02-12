@@ -12,7 +12,7 @@ public final class City extends Location {
     public City(String name) {
         super(name);
         this.population = new ArrayList<>();
-        System.out.printf("Действия присходят в городе '%s''%n'", name);
+        System.out.printf("Действия присходят в городе '%s'%n", name);
     }
 
     @Override
@@ -23,13 +23,10 @@ public final class City extends Location {
 
     @Override
     public void del(Object obj) {
-        System.out.println("OOOOOOOOOOOOOO");
         MiniPEKKA citizen = (MiniPEKKA) obj;
-        System.out.println("OOOOOOOOOOOOOO");
-        population.remove(citizen);
-//        if (!population.remove(citizen)) {
-//            throw new DelFromLocationException("Такого жителя в городе нет");
-//        }
+        if (!population.remove(citizen)) {
+            throw new DelFromLocationException("Такого жителя в городе нет");
+        }
     }
 
     public ArrayList<MiniPEKKA> getPopulation() {return population;}

@@ -16,10 +16,9 @@ public class Main {
             CityGirl citizen = new CityGirl(names.get(rand.nextInt(names.size())), 13, city);
             names.remove(citizen.getName());
         }
-        CityGuy citizen1 = new CityGuy("Тюбик", 14, city);
-        System.out.println(citizen1.getName());
-        CityGuy citizen2 = new CityGuy("Гусля", 13, city);
-        System.out.println(citizen2.getName());
+        new CityGuy("Тюбик", 14, city);
+        new CityGuy("Гусля", 13, city);
+        System.out.println();
         return city;
     }
 
@@ -27,13 +26,14 @@ public class Main {
         Wardrobe wardrobe = new Wardrobe("Подвал");
         ArrayList<String> clothesNames = new ArrayList<>(List.of("Халат домашний", "Топ", "Шаровары", "Комбинезон",
                 "Костюм химзащ", "Шлем", "Скафандр", "Трусы", "Тапок (один)", "Галстук"));
-        System.out.printf("В гардеробе есть: '%n'");
+        System.out.printf("В гардеробе есть: %n");
         while (clothesNames.size() > 4) {
             Random rand = new Random();
             Clothes clothes = new Clothes(clothesNames.get(rand.nextInt(clothesNames.size())));
             System.out.println(clothes.getName());
             clothesNames.remove(clothes.getName());
         }
+        System.out.println();
         return wardrobe;
     }
 
@@ -44,6 +44,7 @@ public class Main {
         ArrayList<MiniPEKKA> population = city.getPopulation();
         ((CityGuy) population.get(population.size() - 1)).moveTo(hospital);
         ((CityGuy) population.get(population.size() - 1)).moveTo(hospital);
+        System.out.println();
         return hospital;
     }
 
