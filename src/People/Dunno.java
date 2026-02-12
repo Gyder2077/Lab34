@@ -16,7 +16,7 @@ public class Dunno extends MiniPEKKA implements Movable {
         super(name, age, currentLocation);
         currentEmotion = Emotion.JOY;
         isAlive = true;
-        satiety = -10;
+        satiety = -15;
         System.out.printf("Великий путешественник '%s' попадает в '%s',%s%n",
                 name, currentLocation.getName(), currentEmotion.getEmotion());
     }
@@ -30,7 +30,12 @@ public class Dunno extends MiniPEKKA implements Movable {
         if (item.getType().getConsumable()) {
             Food food = (Food) item;
             satiety += food.getUsefulness();
-        }
+            if (satiety >= 15) {
+                changeEmotion(Emotion.JOY);
+            } else if (satiety >= 0) {
+                changeEmotion(Emotion.NEUTRAL);
+            }
+        } else {throw new RuntimeException();}
     }
 
     @Override

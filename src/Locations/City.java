@@ -3,8 +3,7 @@ package Locations;
 import Exceptions.DelFromLocationException;
 import People.MiniPEKKA;
 
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.*;
 
 public final class City extends Location {
     private final ArrayList<MiniPEKKA> population;
