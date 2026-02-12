@@ -30,7 +30,6 @@ public final class City extends Location {
     }
 
     public ArrayList<MiniPEKKA> getPopulation() {return population;}
-    public void setPopulation(ArrayList<MiniPEKKA> population) {this.population = population;}
 
     @Override
     public boolean equals(Object obj) {
