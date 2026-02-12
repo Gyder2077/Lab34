@@ -2,26 +2,24 @@ package People;
 
 import Enums.ItemType;
 import Exceptions.GettingItemException;
-import Items.Item;
+import Items.*;
 import Locations.Location;
 
 import java.util.Objects;
 
 public class Doctor extends MiniPEKKA {
-    private Item item;
+    private Catalog item;
 
     public Doctor(String name, int age, Location currentLocation) {
         super(name, age, currentLocation);
         System.out.println(name + " доктор в " + currentLocation.getName());
     }
 
-    public Item getItem() {return item;}
-
     @Override
     public void getItem(Item item) {
         if (item.getType() == ItemType.CATALOG) {
-            this.item = item;
-            System.out.printf("'%s' получила список необходимых вещей'%n'", name);
+            this.item = (Catalog) item;
+            System.out.printf("'%s' получила список необходимых вещей'%n%s%n'", name, this.item.getText());
         } else {throw new GettingItemException("Доктор может получать только список");}
     }
 
