@@ -53,12 +53,12 @@ public class CityGuy extends MiniPEKKA implements Movable {
     }
 
     @Override
-    public int hashCode() {return Objects.hash(name, age, currentLocation, currentEmotion, item);}
+    public int hashCode() {return Objects.hash(name, age, currentEmotion, item);}
 
     @Override
     public String toString() {
-        return String.format("CityGuy{name='%s', age='%d', currentLocation='%s', currentEmotion='%s', item='%s'}",
-                name, age, currentLocation.toString(), currentEmotion, item);
+        return String.format("CityGuy{name='%s', age='%d', currentEmotion='%s', item='%s'}",
+                name, age, currentEmotion, item);
     }
 }
 

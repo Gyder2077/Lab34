@@ -65,12 +65,12 @@ public class CityGirl extends CityGuy implements Spreader {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, age, currentLocation, currentEmotion, item, news);
+        return Objects.hash(name, age, currentEmotion, item, news);
     }
 
     @Override
     public String toString() {
-        return String.format("CityGirl{name='%s', age='%d', currentLocation='%s', currentEmotion='%s', item='%s', news='%s'}",
-                name, age, currentLocation.toString(), currentEmotion, item, news);
+        return String.format("CityGirl{name='%s', age='%d', currentEmotion='%s', item='%s', news='%s'}",
+                name, age, currentEmotion, item, news);
     }
 }

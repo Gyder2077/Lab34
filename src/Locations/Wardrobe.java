@@ -43,6 +43,6 @@ public class Wardrobe extends Location {
 
     @Override
     public String toString() {
-        return String.format("Wardrobe{name='%s', items='%s'}", name, items.toString());
+        return String.format("Wardrobe{name='%s', items='%s'}", name, items);
     }
 }

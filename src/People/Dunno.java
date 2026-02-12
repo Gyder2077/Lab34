@@ -69,12 +69,12 @@ public class Dunno extends MiniPEKKA implements Movable {
     }
 
     @Override
-    public int hashCode() {return Objects.hash(name, age, currentLocation, isAlive, satiety, currentEmotion);}
+    public int hashCode() {return Objects.hash(name, age, isAlive, satiety, currentEmotion);}
 
     @Override
     public String toString() {
-        return String.format("Dunno{name='%s', age='%d', currentLocation='%s', isAlive='%s', satiety='%d', currentEmotion='%s'}",
-                name, age, currentLocation.toString(), isAlive, satiety, currentEmotion);
+        return String.format("Dunno{name='%s', age='%d', isAlive='%s', satiety='%d', currentEmotion='%s'}",
+                name, age, isAlive, satiety, currentEmotion);
     }
 }
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public final class City extends Location {
-    private ArrayList<MiniPEKKA> population;
+    private final ArrayList<MiniPEKKA> population;
 
     public City(String name) {
         super(name);
@@ -23,10 +23,13 @@ public final class City extends Location {
 
     @Override
     public void del(Object obj) {
+        System.out.println("OOOOOOOOOOOOOO");
         MiniPEKKA citizen = (MiniPEKKA) obj;
-        if (!population.remove(citizen)) {
-            throw new DelFromLocationException("Такого жителя в городе нет");
-        }
+        System.out.println("OOOOOOOOOOOOOO");
+        population.remove(citizen);
+//        if (!population.remove(citizen)) {
+//            throw new DelFromLocationException("Такого жителя в городе нет");
+//        }
     }
 
     public ArrayList<MiniPEKKA> getPopulation() {return population;}
@@ -43,6 +46,6 @@ public final class City extends Location {
 
     @Override
     public String toString() {
-        return String.format("City{name='%s', population='%s'}", name, population.toString());
+        return String.format("City{name='%s', population='%s'}", name, population);
     }
 }

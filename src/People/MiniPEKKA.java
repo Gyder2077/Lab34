@@ -33,14 +33,14 @@ public abstract class MiniPEKKA {
     public boolean equals(Object obj) {
         if (obj.getClass() != getClass()) {return false;}
         MiniPEKKA that = (MiniPEKKA) obj;
-        return Objects.equals(that.name, name) && Objects.equals(that.age, age) && Objects.equals(that.currentLocation, currentLocation);
+        return Objects.equals(that.name, name) && Objects.equals(that.age, age);
     }
 
     @Override
-    public int hashCode() {return Objects.hash(name, age, currentLocation);}
+    public int hashCode() {return Objects.hash(name, age);}
 
     @Override
     public String toString() {
-        return String.format("MiniPEKKA{name='%s', age='%d', currentLocation='%s'}", name, age, currentLocation.toString());
+        return String.format("MiniPEKKA{name='%s', age='%d'}", name, age);
     }
 }

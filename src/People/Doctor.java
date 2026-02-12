@@ -31,11 +31,11 @@ public class Doctor extends MiniPEKKA {
     }
 
     @Override
-    public int hashCode() {return Objects.hash(name, age, currentLocation, item);}
+    public int hashCode() {return Objects.hash(name, age, item);}
 
     @Override
     public String toString() {
-        return String.format("Doctor{name='%s', age='%d', currentLocation='%s', item='%s'}",
-                name, age, currentLocation.toString(), item);
+        return String.format("Doctor{name='%s', age='%d', item='%s'}",
+                name, age, item);
     }
 }

@@ -46,6 +46,6 @@ public final class Hospital extends Location {
 
     @Override
     public String toString() {
-        return String.format("Hospital{name='%s', population='%s', doctor='%s'}", name, population.toString(), doctor.toString());
+        return String.format("Hospital{name='%s', population='%s', doctor='%s'}", name, population, doctor.getName());
     }
 }

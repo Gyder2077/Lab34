@@ -10,11 +10,10 @@ public class Main {
         City city = new City("Хабаровск");
         ArrayList<String> names = new ArrayList<>(List.of("Синеглазка", "Белочка", "Галочка",
                 "Ёлочка", "Заинька", "Кисонька", "Кубышка", "Маргаритка", "Пушинка", "Снежинка"));
-        System.out.printf("В городе '%s' живут:'%n'", city.getName());
+        System.out.printf("В городе '%s' живут:%n", city.getName());
         while (names.size() > 4) {
             Random rand = new Random();
             CityGirl citizen = new CityGirl(names.get(rand.nextInt(names.size())), 13, city);
-            System.out.println(citizen.getName());
             names.remove(citizen.getName());
         }
         CityGuy citizen1 = new CityGuy("Тюбик", 14, city);
@@ -42,8 +41,9 @@ public class Main {
         Hospital hospital = new Hospital("Больничка");
         Doctor doc = new Doctor("Медуница", 15, hospital);
         hospital.setDoctor(doc);
-        ((CityGuy) city.getPopulation().get(-1)).moveTo(hospital);
-        ((CityGuy) city.getPopulation().get(-1)).moveTo(hospital);
+        ArrayList<MiniPEKKA> population = city.getPopulation();
+        ((CityGuy) population.get(population.size() - 1)).moveTo(hospital);
+        ((CityGuy) population.get(population.size() - 1)).moveTo(hospital);
         return hospital;
     }
 
