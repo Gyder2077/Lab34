@@ -29,9 +29,7 @@ public final class City extends Location {
         }
     }
 
-    public ArrayList<MiniPEKKA> getPopulation() {
-        return population;
-    }
+    public ArrayList<MiniPEKKA> getPopulation() {return population;}
 
     @Override
     public boolean equals(Object obj) {
