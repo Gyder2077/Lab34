@@ -1,9 +1,9 @@
 package Interfaces;
 
-import People.MiniPEKKA;
+import People.MiniGuy;
 
 import java.util.ArrayList;
 
 public interface Spreader {
-    void spread (ArrayList<MiniPEKKA> population);
+    void spread (ArrayList<MiniGuy> population);
 }

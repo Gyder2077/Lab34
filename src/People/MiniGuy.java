@@ -6,12 +6,12 @@ import Locations.Location;
 
 import java.util.Objects;
 
-public abstract class MiniPEKKA {
+public abstract class MiniGuy {
     protected final String name;
     protected int age;
     protected Location currentLocation;
 
-    public MiniPEKKA(String name, int age, Location currentLocation) {
+    public MiniGuy(String name, int age, Location currentLocation) {
         this.name = name;
         checkAge(age);
         this.currentLocation = currentLocation;
@@ -32,7 +32,7 @@ public abstract class MiniPEKKA {
     @Override
     public boolean equals(Object obj) {
         if (obj.getClass() != getClass()) {return false;}
-        MiniPEKKA that = (MiniPEKKA) obj;
+        MiniGuy that = (MiniGuy) obj;
         return Objects.equals(that.name, name) && Objects.equals(that.age, age);
     }
 

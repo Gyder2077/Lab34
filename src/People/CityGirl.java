@@ -5,21 +5,22 @@ import Exceptions.GettingItemException;
 import Interfaces.Spreader;
 import Items.Item;
 import Locations.*;
-import Records.News;
+import Records.NewsAboutDunno;
 
 import java.util.*;
 
 public class CityGirl extends CityGuy implements Spreader {
-    protected News news;
+    protected NewsAboutDunno newsAboutDunno;
 
     public CityGirl(String name, int age, Location currentLocation) {
         super(name, age, currentLocation);
     }
 
-    public News getNews() {return news;}
-    public void setNews(News news) {
-        this.news = news;
-        if (news.isAlive()) {
+    public Item help() {return item;}
+    public NewsAboutDunno getNews() {return newsAboutDunno;}
+    public void setNews(NewsAboutDunno newsAboutDunno) {
+        this.newsAboutDunno = newsAboutDunno;
+        if (newsAboutDunno.isAlive()) {
             changeEmotion(getRandEmotion());
             spread(((City) currentLocation).getPopulation());
             return;
@@ -34,8 +35,8 @@ public class CityGirl extends CityGuy implements Spreader {
     }
 
     @Override
-    public void spread(ArrayList<MiniPEKKA> population) {
-        for (MiniPEKKA citizen : population) {
+    public void spread(ArrayList<MiniGuy> population) {
+        for (MiniGuy citizen : population) {
             if (citizen.getClass() == getClass() && ((CityGirl) citizen).getNews() != getNews()) {
                 ((CityGirl) citizen).setNews(getNews());
                 break;
@@ -59,17 +60,17 @@ public class CityGirl extends CityGuy implements Spreader {
             return false;
         }
         CityGirl that = (CityGirl) obj;
-        return super.equals(obj) && Objects.equals(that.news, news);
+        return super.equals(obj) && Objects.equals(that.newsAboutDunno, newsAboutDunno);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, age, currentEmotion, item, news);
+        return Objects.hash(name, age, currentEmotion, item, newsAboutDunno);
     }
 
     @Override
     public String toString() {
         return String.format("CityGirl{name='%s', age='%d', currentEmotion='%s', item='%s', news='%s'}",
-                name, age, currentEmotion, item, news);
+                name, age, currentEmotion, item, newsAboutDunno);
     }
 }

@@ -7,7 +7,7 @@ import Interfaces.Movable;
 import Items.*;
 import Locations.*;
 
-public class Dunno extends MiniPEKKA implements Movable {
+public class Dunno extends MiniGuy implements Movable {
     private boolean isAlive;
     private int satiety;
     private Emotion currentEmotion;
@@ -30,11 +30,6 @@ public class Dunno extends MiniPEKKA implements Movable {
         if (item.getType().getConsumable()) {
             Food food = (Food) item;
             satiety += food.getUsefulness();
-            if (satiety >= 15) {
-                changeEmotion(Emotion.JOY);
-            } else if (satiety >= 0) {
-                changeEmotion(Emotion.NEUTRAL);
-            }
         } else {throw new RuntimeException();}
     }
 
@@ -55,7 +50,7 @@ public class Dunno extends MiniPEKKA implements Movable {
                     currentEmotion = Emotion.FATIGUE;
                     System.out.println(name + " из-за аварии попал в больницу города " + currentLocation.getName());
                 }
-            } else {throw new MovingToWardrobeException("В подвал у нас никто не ходит");}
+            } else {throw new LocationChangeException("В " + loc.getName() + " у нас никто не ходит");}
         }
     }
 

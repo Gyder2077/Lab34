@@ -1,10 +1,13 @@
 package Locations;
 
 import Exceptions.DelFromLocationException;
+import Items.Clothes;
 import Items.Item;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class Wardrobe extends Location {
     private ArrayList<Item> items;
@@ -12,6 +15,22 @@ public class Wardrobe extends Location {
     public Wardrobe(String name) {
         super(name);
         this.items = new ArrayList<>();
+    }
+
+    public static Wardrobe wardrobeCreation() {
+        Wardrobe wardrobe = new Wardrobe("Подвал");
+        ArrayList<String> clothesNames = new ArrayList<>(List.of("Халат домашний", "Топ", "Шаровары", "Комбинезон",
+                "Костюм химзащ", "Шлем", "Скафандр", "Трусы", "Тапок (один)", "Галстук", "Полотенце"));
+        System.out.printf("В гардеробе есть: %n");
+        while (clothesNames.size() > 5) {
+            Random rand = new Random();
+            Clothes clothes = new Clothes(clothesNames.get(rand.nextInt(clothesNames.size())));
+            wardrobe.add(clothes);
+            System.out.println(clothes.getName());
+            clothesNames.remove(clothes.getName());
+        }
+        System.out.println();
+        return wardrobe;
     }
 
     @Override

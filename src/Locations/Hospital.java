@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public final class Hospital extends Location {
-    private ArrayList<MiniPEKKA> population;
+    private ArrayList<MiniGuy> population;
     private Doctor doctor;
 
     public Hospital(String name) {
@@ -15,15 +15,26 @@ public final class Hospital extends Location {
         this.population = new ArrayList<>();
     }
 
+    public static Hospital hospitalCreation(City city) {
+        Hospital hospital = new Hospital("Больничка");
+        Doctor doc = new Doctor("Медуница", 15, hospital);
+        hospital.setDoctor(doc);
+        ArrayList<MiniGuy> population = city.getPopulation();
+        ((CityGuy) population.get(population.size() - 1)).moveTo(hospital);
+        ((CityGuy) population.get(population.size() - 1)).moveTo(hospital);
+        System.out.println();
+        return hospital;
+    }
+
     @Override
     public void add(Object obj) {
-        MiniPEKKA citizen = (MiniPEKKA) obj;
+        MiniGuy citizen = (MiniGuy) obj;
         population.add(citizen);
     }
 
     @Override
     public void del(Object obj) {
-        MiniPEKKA citizen = (MiniPEKKA) obj;
+        MiniGuy citizen = (MiniGuy) obj;
         if (!population.remove(citizen)) {
             throw new DelFromLocationException("Такого коротышки в больнице нет");
         }
@@ -31,8 +42,7 @@ public final class Hospital extends Location {
 
     public void setDoctor(Doctor doctor) {this.doctor = doctor;}
     public Doctor getDoctor() {return doctor;}
-    public ArrayList<MiniPEKKA> getPopulation() {return population;}
-    public void setPopulation(ArrayList<MiniPEKKA> population) {this.population = population;}
+    public ArrayList<MiniGuy> getPopulation() {return population;}
 
     @Override
     public boolean equals(Object obj) {

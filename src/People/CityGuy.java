@@ -8,7 +8,7 @@ import Locations.*;
 
 import java.util.*;
 
-public class CityGuy extends MiniPEKKA implements Movable {
+public class CityGuy extends MiniGuy implements Movable {
     protected Emotion currentEmotion;
     protected Item item;
 

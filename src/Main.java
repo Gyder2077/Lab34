@@ -1,83 +1,46 @@
 import Items.*;
 import Locations.*;
 import People.*;
-import Records.News;
+import Records.NewsAboutDunno;
 
 import java.util.*;
 
 public class Main {
-    private static City cityCreation() {
-        City city = new City("Хабаровск");
-        ArrayList<String> names = new ArrayList<>(List.of("Синеглазка", "Белочка", "Галочка",
-                "Ёлочка", "Заинька", "Кисонька", "Кубышка", "Маргаритка", "Пушинка", "Снежинка"));
-        System.out.printf("В городе '%s' живут:%n", city.getName());
-        while (names.size() > 4) {
+    private static ArrayList<Item> itemsCreation() {
+        ArrayList<Item> items = new ArrayList<>();
+        ArrayList<String> foodNames = new ArrayList<>(List.of("Соль", "Суп", "Масло", "Сода пищевая",
+                "Сосиски", "Таблетки", "Кофейные зерна", "Котлетки", "Молоко", "Уксус яблочный", "Пельмени", "Омлет"));
+        ArrayList<String> sweetNames = new ArrayList<>(List.of("Чокопай", "Пирог", "Варенье",
+                "Кексики", "Сахар", "Зефирки"));
+        while (foodNames.size() + sweetNames.size() > 12) {
             Random rand = new Random();
-            CityGirl citizen = new CityGirl(names.get(rand.nextInt(names.size())), 13, city);
-            names.remove(citizen.getName());
-        }
-        new CityGuy("Тюбик", 14, city);
-        new CityGuy("Гусля", 13, city);
-        System.out.println();
-        return city;
-    }
 
-    private static Wardrobe wardrobeCreation() {
-        Wardrobe wardrobe = new Wardrobe("Подвал");
-        ArrayList<String> clothesNames = new ArrayList<>(List.of("Халат домашний", "Топ", "Шаровары", "Комбинезон",
-                "Костюм химзащ", "Шлем", "Скафандр", "Трусы", "Тапок (один)", "Галстук", "Полотенце"));
-        System.out.printf("В гардеробе есть: %n");
-        while (clothesNames.size() > 5) {
-            Random rand = new Random();
-            Clothes clothes = new Clothes(clothesNames.get(rand.nextInt(clothesNames.size())));
-            wardrobe.add(clothes);
-            System.out.println(clothes.getName());
-            clothesNames.remove(clothes.getName());
         }
-        System.out.println();
-        return wardrobe;
-    }
-
-    private static Hospital hospitalCreation(City city) {
-        Hospital hospital = new Hospital("Больничка");
-        Doctor doc = new Doctor("Медуница", 15, hospital);
-        hospital.setDoctor(doc);
-        ArrayList<MiniPEKKA> population = city.getPopulation();
-        ((CityGuy) population.get(population.size() - 1)).moveTo(hospital);
-        ((CityGuy) population.get(population.size() - 1)).moveTo(hospital);
-        System.out.println();
-        return hospital;
+        return items;
     }
 
     public static void main(String[] args) {
-        City city = cityCreation();
-        Wardrobe wardrobe = wardrobeCreation();
-        Hospital hospital = hospitalCreation(city);
+        City city = City.cityCreation();
+        Wardrobe wardrobe = Wardrobe.wardrobeCreation();
+        Hospital hospital = Hospital.hospitalCreation(city);
         Dunno dunno = new Dunno("Незнайка", 14, city);
         dunno.moveTo(hospital);
         if (dunno.ifAlive()) {
             hospital.getDoctor().getItem(new Catalog("Список необходимых вещей",
                     "Я не придумал что сюда написать, не бейте пж (по канону тут список вещей 1 2 3...)\n"));
-            for (MiniPEKKA citizen : hospital.getPopulation()) {
+            for (MiniGuy citizen : hospital.getPopulation()) {
                 if (citizen.getClass() == CityGuy.class) {
                     ((CityGuy) citizen).moveTo(wardrobe);
                 }
             }
-            News news = new News(dunno.getName() + " из-за аварии попал в больницу города", true);
-            for (MiniPEKKA citizen : city.getPopulation()) {
-                if (citizen.getClass() == CityGirl.class && ((CityGirl) citizen).getNews() != news) {
-                    ((CityGirl) citizen).setNews(news);
-                    break;
-                }
-            }
+            NewsAboutDunno newsAboutDunno = new NewsAboutDunno(dunno.getName() +
+                    " из-за аварии попал в больницу города", true);
+            city.newsSpread(newsAboutDunno);
+            //TODO получение предметов помощи
+            city.populationMoving(hospital);
         } else {
-            News news = new News(dunno.getName() + " погиб в аварии (анлак)", false);
-            for (MiniPEKKA citizen : city.getPopulation()) {
-                if (citizen.getClass() == CityGirl.class && ((CityGirl) citizen).getNews() != news) {
-                    ((CityGirl) citizen).setNews(news);
-                    break;
-                }
-            }
+            NewsAboutDunno newsAboutDunno = new NewsAboutDunno(dunno.getName() + " погиб в аварии (анлак)", false);
+            city.newsSpread(newsAboutDunno);
             System.out.println("ГГ сдох, город в депрессии\n\nКонец!");
         }
     }

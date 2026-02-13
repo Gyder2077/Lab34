@@ -7,7 +7,7 @@ import Locations.Location;
 
 import java.util.Objects;
 
-public class Doctor extends MiniPEKKA {
+public class Doctor extends MiniGuy {
     private Catalog item;
 
     public Doctor(String name, int age, Location currentLocation) {
