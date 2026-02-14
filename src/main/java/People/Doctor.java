@@ -12,7 +12,7 @@ public class Doctor extends MiniGuy {
 
     public Doctor(String name, int age, Location currentLocation) {
         super(name, age, currentLocation);
-        System.out.println(name + " доктор в " + currentLocation.getName());
+        System.out.println(name + " - доктор в " + currentLocation.getName());
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Food extends Item implements Usefull {
     protected int usefulness;
 
-    protected Food(String name, int usefulness) throws IllegalUsefullnessException {
+    public Food(String name, int usefulness) throws IllegalUsefullnessException {
         super(name);
         setUsefulness(usefulness);
         type = ItemType.FOOD;
@@ -17,10 +17,10 @@ public class Food extends Item implements Usefull {
 
     @Override
     public void setUsefulness(int usefulness) throws IllegalUsefullnessException {
-        if (usefulness > 0 && usefulness <= 10) {
+        if (usefulness >= 0 && usefulness <= 5) {
             this.usefulness = usefulness;
         } else {
-            throw new IllegalUsefullnessException("Полезность должна быть от 0 до 10");
+            throw new IllegalUsefullnessException("Полезность должна быть от 0 до 5");
         }
     }
 

@@ -48,7 +48,7 @@ public class CityGirl extends CityGuy implements Spreader {
     public void getItem(Item item) {
         if (item.getType() != ItemType.CLOTHES && item.getType() != ItemType.CATALOG) {
             this.item = item;
-            System.out.printf("'%s' взяла предмет для помощи'%n'", name);
+            System.out.printf("%s взяла предмет для помощи%n", name);
         } else {
             throw new GettingItemException(name + " не может получать такие предметы");
         }

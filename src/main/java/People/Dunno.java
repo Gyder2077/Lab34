@@ -2,7 +2,7 @@ package People;
 
 import java.util.*;
 import Enums.Emotion;
-import Exceptions.*;
+import Exceptions.LocationChangeException;
 import Interfaces.Movable;
 import Items.*;
 import Locations.*;

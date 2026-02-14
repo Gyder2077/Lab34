@@ -1,6 +1,7 @@
 package Locations;
 
 import Exceptions.DelFromLocationException;
+import Items.Item;
 import People.*;
 import Records.NewsAboutDunno;
 
@@ -36,6 +37,18 @@ public final class City extends Location {
             if (citizen.getClass() == CityGirl.class && ((CityGirl) citizen).getNews() != newsAboutDunno) {
                 ((CityGirl) citizen).setNews(newsAboutDunno);
                 break;
+            }
+        }
+    }
+
+    public void newsSpread(NewsAboutDunno newsAboutDunno, ArrayList<Item> items) {
+        for (MiniGuy citizen : population) {
+            if (citizen.getClass() == CityGirl.class) {
+                CityGirl cityGirl = (CityGirl) citizen;
+                if (cityGirl.getNews() != newsAboutDunno) {
+                    cityGirl.setNews(newsAboutDunno);
+                }
+                cityGirl.getItem(items.remove(0));
             }
         }
     }
