@@ -23,7 +23,7 @@ public class Dunno extends MiniGuy implements Movable {
 
     public int getSatiety() {return satiety;}
     public boolean ifAlive() {return isAlive;}
-    private void setAlive() {isAlive = false;}
+    public void setAlive() {isAlive = false;}
 
     @Override
     public void getItem(Item item) {

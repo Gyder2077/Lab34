@@ -17,10 +17,10 @@ public class Food extends Item implements Usefull {
 
     @Override
     public void setUsefulness(int usefulness) throws IllegalUsefullnessException {
-        if (usefulness >= 0 && usefulness <= 5) {
+        if (usefulness >= 0 && usefulness <= 7) {
             this.usefulness = usefulness;
         } else {
-            throw new IllegalUsefullnessException("Полезность должна быть от 0 до 5");
+            throw new IllegalUsefullnessException("Полезность должна быть от 0 до 7");
         }
     }
 

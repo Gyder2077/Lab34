@@ -2,6 +2,7 @@ package Locations;
 
 import Exceptions.DelFromLocationException;
 import People.*;
+import Items.*;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -24,6 +25,16 @@ public final class Hospital extends Location {
         ((CityGuy) population.get(population.size() - 1)).moveTo(hospital);
         System.out.println();
         return hospital;
+    }
+
+    public void helpDunno(Dunno dunno) {
+        for (MiniGuy citizen : population) {
+            if (citizen.getClass() == CityGirl.class) {
+                Item item = ((CityGirl) citizen).help();
+                dunno.getItem(item);
+                System.out.printf("'%s' помогает '%s' с помощью: %s%n", citizen.getName(), dunno.getName(), item.getName());
+            }
+        }
     }
 
     @Override
