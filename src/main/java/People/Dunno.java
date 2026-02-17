@@ -37,21 +37,20 @@ public class Dunno extends MiniGuy implements Movable {
     public void moveTo(Location loc) {
         if (currentLocation == loc) {
             throw new LocationChangeException(name + " уже находится в " + loc.getName());
-        } else {
-            if (loc.getClass() != Wardrobe.class) {
-                currentLocation.del(this);
-                loc.add(this);
-                currentLocation = loc;
-                double rand = new Random().nextDouble();
-                if (rand <= 0.2) {
-                    setAlive();
-                }
-                if (ifAlive()) {
-                    currentEmotion = Emotion.FATIGUE;
-                    System.out.println(name + " из-за аварии попал в больницу города " + currentLocation.getName());
-                }
-            } else {throw new LocationChangeException("В " + loc.getName() + " у нас никто не ходит");}
         }
+        if (loc.getClass() != Wardrobe.class) {
+            currentLocation.del(this);
+            loc.add(this);
+            currentLocation = loc;
+            double rand = new Random().nextDouble();
+            if (rand <= 0.2) {
+                setAlive();
+            }
+            if (ifAlive()) {
+                currentEmotion = Emotion.FATIGUE;
+                System.out.println(name + " из-за аварии попал в больницу города " + currentLocation.getName());
+            }
+        } else {throw new LocationChangeException("В " + loc.getName() + " у нас никто не ходит");}
     }
 
     @Override
